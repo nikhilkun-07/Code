@@ -1,0 +1,98 @@
+@import "tailwindcss";
+@layer base {
+  :root {
+    --pizza-50: #fff7ed;
+    --pizza-100: #ffedd5;
+    --pizza-200: #fed7aa;
+    --pizza-300: #fdba74;
+    --pizza-400: #fb923c;
+    --pizza-500: #f97316;
+    --pizza-600: #ea580c;
+    --pizza-700: #c2410c;
+    --pizza-800: #9a3412;
+    --pizza-900: #7c2d12;
+  }
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 #f1f5f9;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 10px;
+  border: 2px solid #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #1d4ed8;
+}
+
+::-webkit-scrollbar-corner {
+  background: #f1f5f9;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 #f1f5f9;
+}
+
+@media (prefers-color-scheme: dark) {
+  * {
+    scrollbar-color: #60a5fa #1f2937;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #1f2937;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #60a5fa;
+    border: 2px solid #1f2937;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3b82f6;
+  }
+  
+  ::-webkit-scrollbar-corner {
+    background: #1f2937;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #8b5cf6 #f1f5f9;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #8b5cf6;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #7c3aed;
+}
