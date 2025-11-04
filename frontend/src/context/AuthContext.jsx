@@ -3,7 +3,6 @@ import axios from 'axios'
 
 const AuthContext = createContext()
 const URL = import.meta.env.VITE_BACKEND_URL
-console.log(URL)
 export const useAuth = () => {
   const context = useContext(AuthContext)
   if (!context) {
