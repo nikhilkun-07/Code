@@ -13,7 +13,7 @@ import {
 
 import { useCart } from "../context/CartContext";
 import Cart from "../components/Cart";
-const URL = import.meta.env.VITE_VITE_BACKEND_URL
+const URL = import.meta.env.VITE_BACKEND_URL
 
 const PizzaBuilder = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);

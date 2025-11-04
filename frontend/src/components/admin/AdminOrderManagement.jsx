@@ -1,6 +1,5 @@
 import  { useState, useEffect } from 'react';
 import axios from 'axios';
-import { URL } from '../../service/url';
 import { 
   Package, 
   Truck, 
@@ -15,6 +14,7 @@ import {
   ChevronUp,
   Eye
 } from 'lucide-react';
+const URL = import.meta.env.VITE_BACKEND_URL
 
 const AdminOrderManagement = () => {
   const [orders, setOrders] = useState([]);

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Plus, Edit, Trash2 } from 'lucide-react';
-const URL = import.meta.env.VITE_VITE_BACKEND_URL
+const URL = import.meta.env.VITE_BACKEND_URL
 const AdminIngredientManagement = () => {
   const [ingredients, setIngredients] = useState([]);
   const [showForm, setShowForm] = useState(false);

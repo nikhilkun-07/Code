@@ -4,7 +4,7 @@ import { Pizza, Clock, CheckCircle, Truck, Home, XCircle } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 
 import toast from 'react-hot-toast'
-const URL = import.meta.env.VITE_VITE_BACKEND_URL
+const URL = import.meta.env.VITE_BACKEND_URL
 
 const Orders = () => {
   const [orders, setOrders] = useState([])

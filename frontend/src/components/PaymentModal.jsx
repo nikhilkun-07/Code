@@ -3,7 +3,7 @@ import { X, CreditCard, Smartphone, Wallet, Shield, CheckCircle, XCircle, Loader
 import axios from 'axios';
 
 import toast from 'react-hot-toast';
-const URL = import.meta.env.VITE_VITE_BACKEND_URL
+const URL = import.meta.env.VITE_BACKEND_URL
 
 const PaymentModal = ({ isOpen, onClose, amount, orderId, paymentMethod, onPaymentSuccess }) => {
   const [step, setStep] = useState('details');

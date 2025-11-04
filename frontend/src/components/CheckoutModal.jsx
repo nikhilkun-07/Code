@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import toast from 'react-hot-toast';
 import PaymentModal from './PaymentModal';
-const URL = import.meta.env.VITE_VITE_BACKEND_URL
+const URL = import.meta.env.VITE_BACKEND_URL
 
 const CheckoutModal = ({ onClose, onOrderSuccess, cartItems, totalAmount }) => {
   const { clearCart } = useCart();

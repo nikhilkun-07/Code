@@ -4,7 +4,7 @@ import axios from "axios";
 import { Pizza, Plus, Star, ShoppingCart } from "lucide-react";
 
 import { useCart } from "../context/CartContext";
-const URL = import.meta.env.VITE_VITE_BACKEND_URL
+const URL = import.meta.env.VITE_BACKEND_URL
 
 const Dashboard = () => {
   const [pizzas, setPizzas] = useState([]);
