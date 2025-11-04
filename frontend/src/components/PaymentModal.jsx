@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { X, CreditCard, Smartphone, Wallet, Shield, CheckCircle, XCircle, Loader, Copy, DollarSign } from 'lucide-react';
 import axios from 'axios';
-import { URL } from '../service/url';
+
 import toast from 'react-hot-toast';
+const URL = import.meta.env.VITE_VITE_BACKEND_URL
 
 const PaymentModal = ({ isOpen, onClose, amount, orderId, paymentMethod, onPaymentSuccess }) => {
   const [step, setStep] = useState('details');

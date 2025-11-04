@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Pizza, Plus, Star, ShoppingCart } from "lucide-react";
-import { URL } from "../service/url";
+
 import { useCart } from "../context/CartContext";
+const URL = import.meta.env.VITE_VITE_BACKEND_URL
 
 const Dashboard = () => {
   const [pizzas, setPizzas] = useState([]);

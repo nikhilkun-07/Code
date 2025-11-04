@@ -10,9 +10,10 @@ import {
   Loader,
   Plus,
 } from "lucide-react";
-import { URL } from "../service/url";
+
 import { useCart } from "../context/CartContext";
 import Cart from "../components/Cart";
+const URL = import.meta.env.VITE_VITE_BACKEND_URL
 
 const PizzaBuilder = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);

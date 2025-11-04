@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Plus, Edit, Trash2, Pizza, Upload, X } from 'lucide-react';
-import { URL } from '../../service/url';
+const URL = import.meta.env.VITE_VITE_BACKEND_URL
+
 
 const AdminPizzaManagement = () => {
   const [pizzas, setPizzas] = useState([]);

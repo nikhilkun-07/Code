@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Pizza, Clock, CheckCircle, Truck, Home, XCircle } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
-import { URL } from '../service/url'
+
 import toast from 'react-hot-toast'
+const URL = import.meta.env.VITE_VITE_BACKEND_URL
 
 const Orders = () => {
   const [orders, setOrders] = useState([])

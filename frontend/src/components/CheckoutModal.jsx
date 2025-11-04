@@ -3,9 +3,10 @@ import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { X, CreditCard, Wallet, Smartphone,  DollarSign } from 'lucide-react';
 import axios from 'axios';
-import { URL } from '../service/url';
+
 import toast from 'react-hot-toast';
 import PaymentModal from './PaymentModal';
+const URL = import.meta.env.VITE_VITE_BACKEND_URL
 
 const CheckoutModal = ({ onClose, onOrderSuccess, cartItems, totalAmount }) => {
   const { clearCart } = useCart();

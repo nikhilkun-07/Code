@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Pizza, Package, Users, DollarSign, AlertTriangle } from 'lucide-react';
-import { URL } from '../service/url';
+const URL = import.meta.env.VITE_VITE_BACKEND_URL
 const AdminDashboard = () => {
   const [stats, setStats] = useState({
     totalOrders: 0,
