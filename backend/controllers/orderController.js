@@ -12,9 +12,7 @@ export const createOrder = async (req, res) => {
 
     const enhancedPizzas = await Promise.all(
       pizzas.map(async (pizzaItem) => {
-        // Check if it's a custom pizza (no pizzaId or pizzaId is null)
         if (!pizzaItem.pizzaId) {
-          // It's a custom pizza from pizza builder
           return {
             pizzaId: null,
             quantity: pizzaItem.quantity || 1,
@@ -24,10 +22,8 @@ export const createOrder = async (req, res) => {
           };
         }
 
-        // It's a predefined pizza from the menu
         const pizza = await Pizza.findById(pizzaItem.pizzaId);
         if (!pizza) {
-          // If pizza not found but we have selectedOptions, treat as custom pizza
           if (pizzaItem.selectedOptions) {
             return {
               pizzaId: null,
@@ -229,10 +225,24 @@ export const cancelOrder = async (req, res) => {
     });
   }
 };
-
 export const updatePaymentStatus = async (req, res) => {
   try {
     const { paymentStatus, transactionId, method } = req.body;
+
+
+    const validPaymentStatuses = ['pending', 'paid', 'failed', 'refunded'];
+    if (paymentStatus && !validPaymentStatuses.includes(paymentStatus)) {
+      return res.status(400).json({ 
+        message: 'Invalid payment status. Must be one of: ' + validPaymentStatuses.join(', ') 
+      });
+    }
+
+    const validPaymentMethods = ['card', 'upi', 'cash', 'wallet'];
+    if (method && !validPaymentMethods.includes(method)) {
+      return res.status(400).json({ 
+        message: 'Invalid payment method. Must be one of: ' + validPaymentMethods.join(', ') 
+      });
+    }
 
     const order = await Order.findById(req.params.id);
 
@@ -240,8 +250,17 @@ export const updatePaymentStatus = async (req, res) => {
       return res.status(404).json({ message: 'Order not found' });
     }
 
-    order.paymentInfo.status = paymentStatus || order.paymentInfo.status;
-    order.paymentInfo.method = method || order.paymentInfo.method;
+    if (order.user.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Access denied' });
+    }
+
+    if (paymentStatus) {
+      order.paymentInfo.status = paymentStatus;
+    }
+    
+    if (method) {
+      order.paymentInfo.method = method;
+    }
     
     if (transactionId) {
       order.paymentInfo.transactionId = transactionId;
@@ -251,7 +270,19 @@ export const updatePaymentStatus = async (req, res) => {
       order.paymentInfo.paidAt = new Date();
     }
 
+    if (paymentStatus === 'failed' && order.paymentInfo.paidAt) {
+      order.paymentInfo.paidAt = null;
+    }
+
     await order.save();
+
+    if (order.user && order.user.email) {
+      await sendEmail({
+        email: order.user.email,
+        subject: `Payment Status Updated - Order #${order._id}`,
+        message: `Payment status for your order #${order._id} has been updated to: ${order.paymentInfo.status}. Method: ${order.paymentInfo.method}`,
+      });
+    }
 
     res.json({ 
       message: 'Payment status updated successfully', 

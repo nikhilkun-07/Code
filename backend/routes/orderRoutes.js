@@ -11,6 +11,6 @@ router.patch('/:id/cancel', protect, cancelOrder);
 
 router.get('/', protect, admin, getAllOrders);
 router.patch('/:id/status', protect, admin, updateOrderStatus);
-router.patch('/:id/payment', protect, admin, updatePaymentStatus);
+router.patch('/:id/payment', protect,  updatePaymentStatus);
 
 export default router;

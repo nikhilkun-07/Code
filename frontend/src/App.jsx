@@ -13,7 +13,6 @@ import Orders from "./pages/Orders";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ForgotPassword from "./pages/ForgotPassword";
 
-// Import Admin Components
 import AdminLayout from "./components/admin/AdminLayout";
 import AdminPizzaManagement from "./components/admin/AdminPizzaManagement";
 import AdminIngredientManagement from "./components/admin/AdminIngredientManagement";

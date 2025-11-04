@@ -8,20 +8,19 @@ const orderSchema = new mongoose.Schema(
       required: true 
     },
 
-    // ✅ Multiple pizzas support - both predefined and custom
     pizzas: [
       {
         pizzaId: {
           type: mongoose.Schema.Types.ObjectId,
           ref: 'Pizza',
-          required: false, // Made optional for custom pizzas
+          required: false, 
         },
         quantity: { 
           type: Number, 
           default: 1,
           min: 1
         },
-        customName: String, // For custom pizzas from pizza builder
+        customName: String, 
         selectedOptions: {
           base: String,
           sauce: String,
@@ -29,8 +28,8 @@ const orderSchema = new mongoose.Schema(
           veggies: [String],
           meat: [String],
           price: Number
-        }, // Stores all customization for pizza builder
-        price: { type: Number, required: true } // individual pizza price at time of order
+        }, 
+        price: { type: Number, required: true } 
       },
     ],
 
@@ -68,19 +67,15 @@ const orderSchema = new mongoose.Schema(
       phone: String
     },
     
-    // Order notes from customer
     specialInstructions: String,
-    
-    // Estimated delivery time
+
     estimatedDelivery: Date,
-    
-    // Actual delivery time
+
     deliveredAt: Date
   },
   { timestamps: true }
 );
 
-// Add index for better query performance
 orderSchema.index({ user: 1, createdAt: -1 });
 orderSchema.index({ status: 1 });
 orderSchema.index({ createdAt: -1 });
